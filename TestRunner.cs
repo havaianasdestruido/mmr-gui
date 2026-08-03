@@ -42,10 +42,10 @@ public static class TestRunner
     static extern int UxControlsInitProcess();
 
     [DllImport("uxctl.dll", CallingConvention = CallingConvention.StdCall)]
-    static extern int UxControlsCreateObject(out IntPtr pObject);
+    static extern int UxControlsCreateObject(ref Guid rclsid, ref Guid riid, out IntPtr pObject);
 
     [DllImport("uxctl.dll", CallingConvention = CallingConvention.StdCall)]
-    static extern int UxControlsUninitProcess();
+    static extern void UxControlsUninitProcess();
 
     [DllImport("WLXVideoTrim.dll", CallingConvention = CallingConvention.StdCall)]
     static extern int CreateVideoPlayer(out IntPtr pPlayer);
@@ -159,10 +159,10 @@ public static class TestRunner
                 int hr = UxControlsInitProcess();
                 Report("UxControlsInitProcess", U32(hr) == S_OK, $"0x{U32(hr):X8}");
             }
-            ReportHr("UxControlsCreateObject", () => { IntPtr p = IntPtr.Zero; return (UxControlsCreateObject(out p), p); }, CLASS_E_CLASSNOTAVAILABLE);
+            ReportHr("UxControlsCreateObject", () => { IntPtr p = IntPtr.Zero; Guid c = Guid.Empty; Guid i = Guid.Empty; return (UxControlsCreateObject(ref c, ref i, out p), p); }, CLASS_E_CLASSNOTAVAILABLE);
             {
-                int hr = UxControlsUninitProcess();
-                Report("UxControlsUninitProcess", true, $"0x{U32(hr):X8} (no expected value specified)");
+                UxControlsUninitProcess();
+                Report("UxControlsUninitProcess", true, "callable (void)");
             }
 
             // --- WLXVideoTrim.dll ---
