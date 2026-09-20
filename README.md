@@ -1,5 +1,16 @@
 # mmr-gui — WMMR 32-bit DLL test-suite browser
 
+## Star History
+
+<a href="https://www.star-history.com/?repos=havaianasdestruido%2Fmmr-gui&type=date&legend=top-left">
+ <picture>
+   <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/chart?repos=havaianasdestruido/mmr-gui&type=date&theme=dark&legend=top-left" />
+   <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/chart?repos=havaianasdestruido/mmr-gui&type=date&legend=top-left" />
+   <img alt="Star History Chart" src="https://api.star-history.com/chart?repos=havaianasdestruido/mmr-gui&type=date&legend=top-left" />
+ </picture>
+</a>
+
+
 WinForms + CLI harness that exercises the 32-bit Windows Movie Maker (WMMR) native
 DLLs built from the parent repo's `src` tree. Ships **128 checks across 21 DLLs**:
 COM boilerplate, deep workflows (publish/subscribe lifecycle, MP4 pipeline stubs,
